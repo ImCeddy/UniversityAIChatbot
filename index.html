@@ -44,6 +44,7 @@
         }
 
         .btn {
+            display: inline-block;
             padding: 12px 30px;
             background-color: #ff5722;
             color: white;
@@ -51,6 +52,7 @@
             border: none;
             border-radius: 8px;
             cursor: pointer;
+            text-decoration: none; /* important for <a> */
             transition: background-color 0.3s ease;
         }
 
@@ -74,7 +76,7 @@
         <div class="content">
             <h1>Welcome to the University Inquiries AI Chatbot</h1>
             <p>Get answers to your university-related questions with ease. Our AI assistant is here to help you!</p>
-            <button class="btn" onclick="window.open('https://huggingface.co/spaces/UniversityAIChatbot/University_Inquiries_AI_Chatbot', '_blank');">Start Chat</button>
+            <a href="https://huggingface.co/spaces/UniversityAIChatbot/University_Inquiries_AI_Chatbot" target="_blank" class="btn">Start Chat</a>
         </div>
     </div>
     <footer>
