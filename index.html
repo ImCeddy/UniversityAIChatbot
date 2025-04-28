@@ -8,13 +8,15 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
   <style>
-    html, body {
-      height: 100%;
+    *, *::before, *::after {
+      box-sizing: border-box;
       margin: 0;
+      padding: 0;
     }
 
     body {
       font-family: 'Poppins', sans-serif;
+      height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -22,6 +24,7 @@
       background-size: cover;
       color: #f5f5f5;
       padding: 20px;
+      overflow: hidden;
     }
 
     .container {
@@ -31,7 +34,6 @@
       width: 100%;
       max-width: 1200px;
       gap: 30px;
-      height: 90vh; /* Important */
     }
 
     .info {
@@ -43,8 +45,11 @@
       width: 33%;
       animation: fadeIn 1.5s ease-in-out;
       overflow-y: auto;
-      height: 100%; /* Important */
+      max-height: 85vh;
       position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
     }
 
     .info h2 {
@@ -53,6 +58,7 @@
       background-clip: text;
       color: transparent;
       -webkit-background-clip: text;
+      padding: 0;
       margin-bottom: 20px;
       font-weight: 600;
     }
@@ -65,20 +71,6 @@
       font-weight: 400;
     }
 
-    .scroll-message {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      padding: 10px 20px;
-      background: rgba(0, 0, 0, 0.8);
-      color: white;
-      font-weight: bold;
-      font-size: 1.1rem;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-      display: block;
-    }
-
     .content {
       background: rgba(0, 0, 0, 0.7);
       padding: 40px 30px;
@@ -87,9 +79,6 @@
       backdrop-filter: blur(10px);
       width: 66%;
       animation: fadeIn 1s ease-in-out;
-      position: relative;
-      height: 100%; /* Good practice */
-      overflow-y: auto;
     }
 
     h1 {
@@ -98,6 +87,7 @@
       background-clip: text;
       color: transparent;
       -webkit-background-clip: text;
+      padding: 0;
       margin-bottom: 20px;
       font-weight: 700;
     }
@@ -109,7 +99,6 @@
     }
 
     .btn {
-      display: none;
       padding: 15px 35px;
       background: linear-gradient(to right, #800000, #ff5722, #ffd700);
       color: white;
@@ -119,12 +108,13 @@
       border-radius: 30px;
       cursor: pointer;
       transition: background-color 0.3s ease, transform 0.3s ease;
-      position: absolute;
-      bottom: 20px;
-      right: 20px;
+      position: relative;
+      align-self: flex-end;  /* Align button to the bottom of the info section */
+      margin-top: auto;  /* Push button to the bottom of the container */
     }
 
     .btn:hover {
+      background: linear-gradient(to right, #800000, #ff5722, #ffd700);
       transform: scale(1.1);
     }
 
@@ -146,7 +136,6 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        height: auto;
       }
 
       .content, .info {
@@ -173,53 +162,31 @@
 <body>
   <div class="container">
     <div class="info" id="info">
-      <div class="scroll-message" id="scrollMessage">
-        Scroll down to Start!
-      </div>
-
       <h2>About This Project</h2>
-      
       <h3>Limited Content</h3>
-      <p>Currently, UnivAI relies on a proposed 2019 PUP Handbook as its primary source of information, supplemented by user feedback...</p>
-      
+      <p>Currently, UnivAI relies on a proposed 2019 PUP Handbook as its primary source of information, supplemented by user feedback. While this provides a solid foundation, it means that the AI’s knowledge is limited to these sources. However, we can easily add new information as it becomes available.</p>
       <h3>English Only</h3>
-      <p>Due to hardware limitations, the AI is currently only available in English...</p>
-      
+      <p>Due to hardware limitations, the AI is currently only available in English. My laptop is not powerful enough to support additional features. Multiple Language Feature may never be available.</p>
       <h3>PUP-Only Queries</h3>
-      <p>UnivAI is designed to answer questions related to PUP (Polytechnic University of the Philippines) only...</p>
-      
+      <p>UnivAI is designed to answer questions related to PUP (Polytechnic University of the Philippines) only. It does not handle general queries outside of the university context, as answering broader questions would require more computational power. Also, we already have ChatGPT for that.</p>
       <h3>Sleeping AI</h3>
-      <p>As a free service hosted on a shared server, UnivAI has a limited uptime...</p>
-      
+      <p>As a free service hosted on a shared server, UnivAI has a limited uptime. When not in use, the server may "sleep" or shut down to save resources. This means that the AI is not available 24/7 unless I upgrade to a paid server. If you encounter a delay (about 5 minutes), it's likely because the AI is "waking up" after a period of inactivity.</p>
       <h3>Feature Roadmap</h3>
-      <p>A dashboard will be added that connects to the official PUP Facebook pages...</p>
-      
+      <p>A dashboard will be added that connects to the official PUP Facebook pages, bringing all relevant updates and information into one central location. The AI will analyze these posts in real-time and store them in its database for instant access.</p>
       <h3>A Message from the Developer</h3>
-      <p>I may not be able to dedicate time for updates on the project in the near future...</p>
+      <p>I may not be able to dedicate time for updates on the project in the near future, as I’m currently focusing on other projects. However, I'm eager to hear your feedback so that I can fine-tune the AI and make it more useful for all users. Thank you for your support and for helping this AI grow!</p>
+
+      <!-- Button added at the bottom of the left layout -->
+      <button class="btn" onclick="window.location.href='https://huggingface.co/spaces/oceddyyy/University_Inquiries_AI_Chatbot';">Start Chat</button>
     </div>
 
     <div class="content">
       <h1>Welcome to the University Inquiries AI Chatbot</h1>
-      <p>This AI project is designed to provide students with immediate and accurate answers to common questions...</p>
-      <p>However, please note that this project is still in its developmental stages...</p>
-      <p>To help us improve the AI’s performance, we kindly ask that you provide feedback after each interaction...</p>
-      <button class="btn" onclick="window.location.href='https://huggingface.co/spaces/oceddyyy/University_Inquiries_AI_Chatbot';">Start Chat</button>
+      <p>This AI project is designed to provide students with immediate and accurate answers to common questions related to university services. It covers a wide range of topics, including admissions, courses, campus facilities, faculty details, and much more. Essentially, it aims to serve as a digital assistant to answer queries that you would typically find in the university handbook.</p>
+      <p>However, please note that this project is still in its developmental stages. Like any AI system, UnivAI may occasionally make mistakes or fail to answer specific queries accurately. It is continuously evolving and improving, and your feedback plays a critical role in that process.</p>
+      <p>To help us improve the AI’s performance, we kindly ask that you provide feedback after each interaction. Simply give a thumbs up or thumbs down based on whether the AI's response was relevant and helpful. This feedback helps the AI learn, adapt, and deliver better responses over time, allowing it to serve you more effectively.</p>
     </div>
   </div>
 
-  <script>
-    window.addEventListener('load', function() {
-      const infoSection = document.getElementById('info');
-      const startButton = document.querySelector('.btn');
-      const scrollMessage = document.getElementById('scrollMessage');
-
-      infoSection.addEventListener('scroll', () => {
-        if (infoSection.scrollTop + infoSection.clientHeight >= infoSection.scrollHeight - 1) {
-          startButton.style.display = 'block';
-          scrollMessage.style.display = 'none';
-        }
-      });
-    });
-  </script>
 </body>
 </html>
