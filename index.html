@@ -25,6 +25,7 @@
       color: #f5f5f5;
       padding: 20px;
       overflow: hidden;
+      transition: transform 0.3s ease;
     }
 
     .container {
@@ -35,6 +36,7 @@
       max-width: 1200px;
       gap: 30px;
       margin: 0 auto;
+      transition: transform 0.3s ease;
     }
 
     .info {
@@ -161,10 +163,40 @@
         margin-top: 20px;
       }
     }
+
+    /* Zoom controls */
+    .zoom-controls {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 100;
+    }
+
+    .zoom-btn {
+      background-color: #ff5722;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      font-size: 1rem;
+      margin: 5px;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .zoom-btn:hover {
+      background-color: #ffd700;
+    }
+
   </style>
 </head>
 
 <body>
+  <div class="zoom-controls">
+    <button class="zoom-btn" onclick="zoomIn()">+</button>
+    <button class="zoom-btn" onclick="zoomOut()">-</button>
+  </div>
+
   <div class="container">
     <div class="info" id="info">
       <h2>About This Project</h2>
@@ -192,5 +224,22 @@
     </div>
   </div>
 
+  <script>
+    let currentZoom = 1; // Default scale
+
+    function zoomIn() {
+      if (currentZoom < 1.5) { // Limit zoom-in to 1.5x
+        currentZoom += 0.1;
+        document.querySelector('.container').style.transform = `scale(${currentZoom})`;
+      }
+    }
+
+    function zoomOut() {
+      if (currentZoom > 0.7) { // Limit zoom-out to 0.7x
+        currentZoom -= 0.1;
+        document.querySelector('.container').style.transform = `scale(${currentZoom})`;
+      }
+    }
+  </script>
 </body>
 </html>
