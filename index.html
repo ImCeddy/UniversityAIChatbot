@@ -210,17 +210,18 @@
   </div>
 
   <script>
-    const infoSection = document.getElementById('info');
-    const startButton = document.querySelector('.btn');
-    const scrollMessage = document.getElementById('scrollMessage');
+    window.addEventListener('load', function() {
+      const infoSection = document.getElementById('info');
+      const startButton = document.querySelector('.btn');
+      const scrollMessage = document.getElementById('scrollMessage');
 
-    infoSection.addEventListener('scroll', () => {
-  if (infoSection.scrollTop + infoSection.clientHeight >= infoSection.scrollHeight - 1) {
-    startButton.style.display = 'block';
-    scrollMessage.style.display = 'none';
-  }
-});
-
+      infoSection.addEventListener('scroll', () => {
+        if (infoSection.scrollTop + infoSection.clientHeight >= infoSection.scrollHeight - 1) {
+          startButton.style.display = 'block';
+          scrollMessage.style.display = 'none';
+        }
+      });
+    });
   </script>
 </body>
 </html>
