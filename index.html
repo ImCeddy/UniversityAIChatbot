@@ -1,254 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>University Inquiries AI Chatbot</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>University Inquiries AI Chatbot</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background: url('https://i.imgur.com/5C35fVg.jpeg') no-repeat center center fixed; 
+            background-size: cover;
+            color: white;
+        }
 
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            text-align: center;
+        }
 
-  <style>
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+        .content {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 30px;
+            border-radius: 16px;
+            max-width: 800px;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+        }
 
-    body {
-      font-family: 'Poppins', sans-serif;
-      height: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: url('5C35fVg.jpeg') no-repeat center center fixed;
-      background-size: cover;
-      color: #f5f5f5;
-      padding: 20px;
-      overflow-x: hidden;
-      transition: transform 0.3s ease;
-      flex-direction: column;
-    }
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: #ffeb3b;
+        }
 
-    .container {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      width: 100%;
-      max-width: 1200px;
-      gap: 30px;
-      margin: 0 auto;
-      transition: transform 0.3s ease;
-      flex-wrap: wrap; /* Allow wrapping on smaller screens */
-    }
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: #ffeb3b; 
+        }
 
-    .info {
-      background: rgba(0, 0, 0, 0.7);
-      padding: 40px 30px;
-      border-radius: 12px;
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-      backdrop-filter: blur(10px);
-      width: 100%;
-      animation: fadeIn 1.5s ease-in-out;
-      overflow-y: auto;
-      max-height: 85vh;
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-    }
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: #ff5722;
+            color: white;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none; /* important for <a> */
+            transition: background-color 0.3s ease;
+        }
 
-    .info h2 {
-      font-size: 2.5rem;
-      background: linear-gradient(to right, #800000, #ff5722, #ffd700);
-      background-clip: text;
-      color: transparent;
-      -webkit-background-clip: text;
-      padding: 0;
-      margin-bottom: 20px;
-      font-weight: 600;
-    }
+        .btn:hover {
+            background-color: #e64a19;
+        }
 
-    .info p {
-      font-size: 1.2rem;
-      margin-bottom: 20px;
-      color: white;
-      line-height: 1.6;
-      font-weight: 400;
-    }
+        footer {
+            position: absolute;
+            bottom: 20px;
+            width: 100%;
+            text-align: center;
+            color: #ffeb3b;
+            font-size: 1rem;
+        }
 
-    .content {
-      background: rgba(0, 0, 0, 0.7);
-      padding: 40px 30px;
-      border-radius: 12px;
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-      backdrop-filter: blur(10px);
-      width: 100%;
-      animation: fadeIn 1s ease-in-out;
-    }
-
-    h1 {
-      font-size: 3.5rem;
-      background: linear-gradient(to right, #800000, #ff5722, #ffd700);
-      background-clip: text;
-      color: transparent;
-      -webkit-background-clip: text;
-      padding: 0;
-      margin-bottom: 20px;
-      font-weight: 700;
-    }
-
-    p {
-      font-size: 1.3rem;
-      margin-bottom: 30px;
-      color: white;
-    }
-
-    .btn {
-      padding: 15px 35px;
-      background: linear-gradient(to right, #800000, #ff5722, #ffd700);
-      color: white;
-      font-size: 1.1rem;
-      font-weight: bold;
-      border: none;
-      border-radius: 30px;
-      cursor: pointer;
-      transition: background-color 0.3s ease, transform 0.3s ease;
-      position: relative;
-      align-self: flex-end;
-      margin-top: auto;
-    }
-
-    .btn:hover {
-      background: linear-gradient(to right, #800000, #ff5722, #ffd700);
-      transform: scale(1.1);
-    }
-
-    .btn:active {
-      transform: scale(1);
-    }
-
-    footer {
-      display: none;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @media screen and (max-width: 768px) {
-      body {
-        padding: 10px;
-      }
-
-      .container {
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 20px;
-        width: 100%;
-      }
-
-      .info, .content {
-        width: 100%;
-        padding: 25px;
-      }
-
-      h1, .info h2 {
-        font-size: 2.5rem;
-        text-align: center;
-      }
-
-      p {
-        font-size: 1rem;
-      }
-
-      .btn {
-        padding: 12px 30px;
-        font-size: 1rem;
-        align-self: center;
-        margin-top: 20px;
-      }
-    }
-
-    /* Zoom controls */
-    .zoom-controls {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      z-index: 100;
-    }
-
-    .zoom-btn {
-      background-color: #ff5722;
-      color: white;
-      border: none;
-      padding: 10px 15px;
-      font-size: 1rem;
-      margin: 5px;
-      border-radius: 50%;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-
-    .zoom-btn:hover {
-      background-color: #ffd700;
-    }
-
-  </style>
+    </style>
 </head>
-
 <body>
-  <div class="zoom-controls">
-    <button class="zoom-btn" onclick="zoomIn()">+</button>
-    <button class="zoom-btn" onclick="zoomOut()">-</button>
-  </div>
-
-  <div class="container">
-    <!-- Content moved to top -->
-    <div class="content">
-      <h1>Welcome to the University Inquiries AI Chatbot</h1>
-      <p>This AI project is designed to provide students with immediate and accurate answers to common questions related to university services. It covers a wide range of topics, including admissions, courses, campus facilities, faculty details, and much more. Essentially, it aims to serve as a digital assistant to answer queries that you would typically find in the university handbook.</p>
-      <p>However, please note that this project is still in its developmental stages. Like any AI system, UnivAI may occasionally make mistakes or fail to answer specific queries accurately. It is continuously evolving and improving, and your feedback plays a critical role in that process.</p>
-      <p>To help us improve the AI’s performance, we kindly ask that you provide feedback after each interaction. Simply give a thumbs up or thumbs down based on whether the AI's response was relevant and helpful. This feedback helps the AI learn, adapt, and deliver better responses over time, allowing it to serve you more effectively.</p>
+    <div class="container">
+        <div class="content">
+            <h1>Welcome to the University Inquiries AI Chatbot</h1>
+            <p>Get answers to your university-related questions with ease. Our AI assistant is here to help you!</p>
+            <a href="https://huggingface.co/spaces/UniversityAIChatbot/University_Inquiries_AI_Chatbot" target="_blank" class="btn">Start Chat</a>
+        </div>
     </div>
-
-    <!-- About this project moved to bottom -->
-    <div class="info" id="info">
-      <h2>About This Project</h2>
-      <h3>Limited Content</h3>
-      <p>Currently, UnivAI relies on a proposed 2019 PUP Handbook as its primary source of information, supplemented by user feedback. While this provides a solid foundation, it means that the AI’s knowledge is limited to these sources. However, we can easily add new information as it becomes available.</p>
-      <h3>English Only</h3>
-      <p>Due to hardware limitations, the AI is currently only available in English. My laptop is not powerful enough to support additional features. Multiple Language Feature may never be available.</p>
-      <h3>PUP-Only Queries</h3>
-      <p>UnivAI is designed to answer questions related to PUP (Polytechnic University of the Philippines) only. It does not handle general queries outside of the university context, as answering broader questions would require more computational power. Also, we already have ChatGPT for that.</p>
-      <h3>Sleeping AI</h3>
-      <p>As a free service hosted on a shared server, UnivAI has a limited uptime. When not in use, the server may "sleep" or shut down to save resources. This means that the AI is not available 24/7 unless I upgrade to a paid server. If you encounter a delay (about 5 minutes), it's likely because the AI is "waking up" after a period of inactivity.</p>
-      <h3>Feature Roadmap</h3>
-      <p>A dashboard will be added that connects to the official PUP Facebook pages, bringing all relevant updates and information into one central location. The AI will analyze these posts in real-time and store them in its database for instant access.</p>
-      <h3>A Message from the Developer</h3>
-      <p>I may not be able to dedicate time for updates on the project in the near future, as I’m currently focusing on other projects. However, I'm eager to hear your feedback so that I can fine-tune the AI and make it more useful for all users. Thank you for your support and for helping this AI grow!</p>
-
-      <a href="https://huggingface.co/spaces/UniversityAIChatbot/University_Inquiries_AI_Chatbot" target="_blank" class="btn">Start Chat</a>
-    </div>
-  </div>
-
-  <script>
-    let currentZoom = 1; // Default scale
-
-    function zoomIn() {
-      if (currentZoom < 1.5) { // Limit zoom-in to 1.5x
-        currentZoom += 0.1;
-        document.querySelector('.container').style.transform = `scale(${currentZoom})`;
-      }
-    }
-
-    function zoomOut() {
-      if (currentZoom > 0.7) { // Limit zoom-out to 0.7x
-        currentZoom -= 0.1;
-        document.querySelector('.container').style.transform = `scale(${currentZoom})`;
-      }
-    }
-  </script>
+    <footer>
+        <p>Powered by AI – University Chatbot</p>
+    </footer>
 </body>
 </html>
