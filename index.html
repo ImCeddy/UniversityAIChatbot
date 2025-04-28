@@ -215,12 +215,12 @@
     const scrollMessage = document.getElementById('scrollMessage');
 
     infoSection.addEventListener('scroll', () => {
-      // Check if the user has scrolled to the bottom
-      if (infoSection.scrollHeight - infoSection.scrollTop === infoSection.clientHeight) {
-        startButton.style.display = 'block'; // Show the Start Chat button
-        scrollMessage.style.display = 'none'; // Hide the scroll message
-      }
-    });
+  if (infoSection.scrollTop + infoSection.clientHeight >= infoSection.scrollHeight - 1) {
+    startButton.style.display = 'block';
+    scrollMessage.style.display = 'none';
+  }
+});
+
   </script>
 </body>
 </html>
