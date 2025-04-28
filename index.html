@@ -34,6 +34,7 @@
       width: 100%;
       max-width: 1200px;
       gap: 30px;
+      margin: 0 auto;
     }
 
     .info {
@@ -109,8 +110,8 @@
       cursor: pointer;
       transition: background-color 0.3s ease, transform 0.3s ease;
       position: relative;
-      align-self: flex-end;  /* Align button to the bottom of the info section */
-      margin-top: auto;  /* Push button to the bottom of the container */
+      align-self: flex-end;
+      margin-top: auto;
     }
 
     .btn:hover {
@@ -136,24 +137,28 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        gap: 20px;
       }
 
-      .content, .info {
-        max-width: 100%;
-        padding: 30px;
+      .info, .content {
+        width: 100%;
+        padding: 25px;
       }
 
       h1, .info h2 {
         font-size: 2.5rem;
+        text-align: center;
       }
 
       p {
-        font-size: 1.1rem;
+        font-size: 1rem;
       }
 
       .btn {
         padding: 12px 30px;
         font-size: 1rem;
+        align-self: center;
+        margin-top: 20px;
       }
     }
   </style>
@@ -176,7 +181,6 @@
       <h3>A Message from the Developer</h3>
       <p>I may not be able to dedicate time for updates on the project in the near future, as I’m currently focusing on other projects. However, I'm eager to hear your feedback so that I can fine-tune the AI and make it more useful for all users. Thank you for your support and for helping this AI grow!</p>
 
-      <!-- Button added at the bottom of the left layout -->
       <button class="btn" onclick="window.location.href='https://huggingface.co/spaces/oceddyyy/University_Inquiries_AI_Chatbot';">Start Chat</button>
     </div>
 
